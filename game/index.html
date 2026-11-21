@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#19272d">
+  <meta name="description" content="An original illustrated spot-the-difference game: three worlds, thirty changes, a journey from dusk to morning.">
+  <title>Afterlight — A field guide to little changes</title>
+  <link rel="icon" href="data:,">
+  <style>
+    :root{color-scheme:dark;--paper:#f4e6c9;--gold:#edbd73;--muted:#a6b6b2;--line:#ffffff20;--bg:#19272d}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--paper);font-family:Arial,Helvetica,sans-serif;min-width:760px}
+    button{font:600 13px Arial,sans-serif;cursor:pointer;color:var(--paper);background:#ffffff09;border:1px solid #ffffff30;border-radius:7px;padding:12px 17px;transition:background .15s}
+    button:hover{background:#ffffff18}button:focus-visible{outline:3px solid var(--gold);outline-offset:4px}button:disabled{opacity:.35;cursor:default}
+    .app{max-width:1280px;margin:auto;padding:23px 40px 18px}.masthead{display:flex;justify-content:space-between;align-items:center;padding-bottom:18px;border-bottom:1px solid var(--line)}
+    .brand{letter-spacing:6px;font-size:17px;font-weight:700}.brand span{color:var(--gold);font-size:21px;margin-right:11px}.edition{letter-spacing:2.3px;color:var(--muted);font-size:10px}.sound{padding:7px 12px;font-size:11px;margin-left:18px}
+    .heading{display:flex;align-items:center;justify-content:space-between;padding:20px 0 18px;gap:20px}.scene{min-width:310px}.meta{font-size:10px;letter-spacing:1.8px;color:var(--gold);font-weight:700}h1{font:34px Georgia,serif;margin:7px 0 5px;line-height:1}.subtitle{font-size:12px;color:var(--muted);margin:0}
+    .remaining{display:flex;align-items:center;gap:11px;border-left:1px solid var(--line);padding-left:25px;color:var(--gold);min-width:140px}.remaining b{font:52px Georgia,serif;line-height:1}.remaining span{font-size:13px;line-height:1.5}.tools{display:flex;gap:10px;align-items:center}.timebox{text-align:right;margin-right:13px}.timebox small{font-size:9px;letter-spacing:2px;color:var(--muted)}time{font:26px Georgia,serif;display:block;font-variant-numeric:tabular-nums;margin-top:2px}.overtime{color:#f19b83}.strikesbox{text-align:center;margin-right:12px}.strikesbox small{font-size:9px;letter-spacing:1.5px;color:var(--muted)}#strikes{display:flex;gap:5px;margin-top:7px}#strikes span{border:1px solid #a6b6b255;color:#a6b6b266;width:17px;height:17px;line-height:14px;border-radius:50%;font-size:15px}#strikes .used{background:#ca725f;color:var(--paper);border-color:#ca725f}#hint{background:var(--gold);border-color:var(--gold);color:#283438}
+    .panel-labels{display:grid;grid-template-columns:1fr 40px 1fr;padding:0 20px 10px;font-size:10px;letter-spacing:1.8px;color:#c6d1c7}.panel-labels b{font-size:9px;text-align:center;letter-spacing:1px;color:var(--gold)}.panel-labels span:last-child{text-align:right}.panel-labels em{font-style:normal;color:#829891;letter-spacing:1px;margin-left:7px}
+    .board{position:relative;margin:0 20px}canvas{display:block;width:100%;height:auto;touch-action:manipulation;cursor:crosshair;filter:drop-shadow(0 12px 18px #0002)}
+    .progress{height:2px;margin:17px 20px 0;background:#ffffff12}.progress div{height:2px;background:var(--gold);transition:width .25s}.bottom{display:flex;align-items:center;justify-content:space-between;margin:15px 20px 0;min-height:29px;gap:20px}.foundrow{display:flex;align-items:center;gap:14px;font-size:10px;color:var(--muted);letter-spacing:1px}#dots{display:flex;gap:7px}.dot{display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;border-radius:50%;border:1px solid #8da59b70;font-size:11px;color:#263b35}.dot.found{background:#92b99e;border-color:#92b99e}.level{font-size:9px;letter-spacing:1.6px;color:var(--muted)}
+    .foot{display:flex;justify-content:space-between;align-items:center;margin:13px 20px 0;padding-top:12px;border-top:1px solid var(--line)}#status{font-size:12px;color:#c6d0c5;margin:0;line-height:1.5}.keys{font-size:10px;color:#93aaa2;white-space:nowrap}kbd{font:10px Arial;border:1px solid #ffffff25;padding:2px 4px;border-radius:3px;color:#d1d9ca;margin-left:8px}#restart{font-size:10px;padding:5px 8px;margin-left:10px;border:none;color:var(--muted)}
+    .veil{position:absolute;inset:0;background:#15282adb;backdrop-filter:blur(5px);display:flex;align-items:center;justify-content:center;border-radius:12px}.card{text-align:center;max-width:540px;padding:24px}.card .seal{font:48px Georgia;color:var(--gold);margin-bottom:16px}.card small{color:var(--gold);font-size:10px;letter-spacing:3px}.card h2{font:46px Georgia,serif;margin:15px 0}.card p{font:16px/1.8 Georgia,serif;color:#d0d6c8;margin:0 auto 24px;max-width:440px}.card button{background:var(--gold);border:none;color:#263832;padding:15px 25px}.card .instructions{font:11px/1.8 Arial;margin:21px auto 0;color:#a8bcb1}
+    [hidden]{display:none!important}.completion{display:flex;align-items:center;gap:20px;background:#233d37;border:1px solid #91b79b55;border-radius:8px;padding:8px 12px;margin:9px 20px 0}.completion strong{font-size:12px;color:#bfdbbb;letter-spacing:1px;flex:1}.completion button{padding:8px 13px;background:var(--gold);color:#283438;border:none}
+    .app{padding-top:18px}.masthead{padding-bottom:12px}.heading{padding-top:17px;padding-bottom:14px}.progress{margin-top:12px}.bottom{margin-top:11px;min-height:22px}.foot{margin-top:9px}
+    @media(max-width:1050px){.app{padding:18px 20px}.edition{display:none}.scene{min-width:245px}.heading{gap:12px}.remaining{padding-left:15px;min-width:110px}.tools{gap:6px}.tools button{padding:11px 10px}.timebox,.strikesbox{margin-right:4px}.subtitle{font-size:10px}h1{font-size:28px}.remaining b{font-size:44px}.keys{font-size:9px}.level{font-size:8px}}
+  </style>
+</head>
+<body>
+<main class="app">
+  <header class="masthead"><div class="brand"><span>✦</span>AFTERLIGHT</div><div><span class="edition">AN OBSERVATION JOURNAL &nbsp; / &nbsp; VOL. 01</span><button class="sound" id="sound" aria-label="Toggle sound">♪ Sound on</button></div></header>
+  <section class="heading" aria-label="Hunt controls">
+    <div class="scene"><div class="meta" id="scene-meta"></div><h1 id="scene-name"></h1><p class="subtitle" id="subtitle"></p></div>
+    <div class="remaining"><b id="remaining">10</b><span>changes<br>to find</span></div>
+    <div class="tools"><div class="timebox"><small>YOUR TIME</small><time id="time">00:00</time></div><div class="strikesbox"><small>STRIKES</small><div id="strikes" aria-label="Strikes"></div></div><button id="hint" title="Hint (H)">✦ Hint (3)</button><button id="pause" title="Pause (P)">Ⅱ Pause</button></div>
+  </section>
+  <div class="panel-labels"><span>LEFT <em>— original</em></span><b>VS</b><span>RIGHT <em>— spot the changes</em></span></div>
+  <div class="board"><canvas id="world" width="1160" height="500" aria-label="Two illustrated pictures. Click a difference in either picture. Ten differences per scene."></canvas>
+    <div class="veil" id="veil"><div class="card"><div class="seal">✦</div><small id="eyebrow"></small><h2 id="overlay-title"></h2><p id="overlay-copy"></p><button id="primary"></button><p class="instructions">Click either picture to mark a change · 3 hints per scene<br>Three wrong guesses restart the scene · Every miss adds 10 seconds</p></div></div>
+  </div>
+  <div class="progress" aria-hidden="true"><div id="progress-fill"></div></div>
+  <div class="bottom"><div class="foundrow">FOUND <div id="dots"></div></div><div class="level" id="level"></div></div>
+  <div id="completion" class="completion" hidden><strong id="result"></strong><button id="next">Next scene →</button></div>
+  <footer class="foot" id="game-footer"><p id="status" role="status" aria-live="polite"></p><div class="keys"><kbd>H</kbd> Hint <kbd>P</kbd> Pause <kbd>N</kbd> Next <button id="restart">↻ Restart</button></div></footer>
+</main>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
